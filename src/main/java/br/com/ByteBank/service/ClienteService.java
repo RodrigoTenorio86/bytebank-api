@@ -10,5 +10,5 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ClienteService {
 
-//	private final ClienteRepository repository;
+	private final ClienteRepository repository;
 }

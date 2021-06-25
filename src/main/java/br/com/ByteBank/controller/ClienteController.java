@@ -9,5 +9,5 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class ClienteController {
-	private final ClienteService clienteService; 
+	private final ClienteService clienteService;
 }

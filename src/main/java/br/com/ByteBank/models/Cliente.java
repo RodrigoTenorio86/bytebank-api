@@ -20,5 +20,5 @@ public class Cliente {
 	private String cpf;
 	private String senha;
 	@OneToMany
-	private List<Conta> contas; 
+	private List<Conta> contas;
 }
