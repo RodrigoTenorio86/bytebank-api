@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.ByteBank.dto.ClienteDtoRequest;
 import br.com.ByteBank.models.Cliente;
 
-@RequestMapping(value = "/clientes", produces = { "application/json" }, consumes = { "application/json" })
+@RequestMapping(value = "/clientes",  produces = { "application/json" }, consumes = { "application/json" })
 public interface ClienteApi {
 
 	@PostMapping()
 	ResponseEntity<Cliente> cadastraCliente(@Valid @RequestBody ClienteDtoRequest cliente_);
 
-	@GetMapping(value = "/")
+	@GetMapping()
 	ResponseEntity<List<Cliente>> listaCliente();
 
 	@GetMapping(value = "/cpf/{cpf}")

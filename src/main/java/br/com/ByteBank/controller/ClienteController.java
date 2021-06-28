@@ -29,13 +29,13 @@ public class ClienteController implements ClienteApi {
 	@Override
 	public ResponseEntity<List<Cliente>> listaCliente() {
 
-		return ResponseEntity.ok(clienteService.findAll());
+		return new ResponseEntity<>(clienteService.findAll(),HttpStatus.OK);
 	}
 
 	@Override
 	public ResponseEntity<Cliente> consultaClientePorCpf(String cpf) {
 
-		return ResponseEntity.ok(clienteService.findByCpf(cpf));
+		return new ResponseEntity<>(clienteService.findByCpf(cpf),HttpStatus.OK);
 	}
 
 }
