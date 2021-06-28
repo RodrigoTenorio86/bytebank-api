@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,7 +38,7 @@ public class TransacaoController implements TransacaoApi{
 	@Override
 	public ResponseEntity<Void> excluiTransacao(Long codigo) {
 		transacaoService.delete(codigo);
-		return null;
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
 	

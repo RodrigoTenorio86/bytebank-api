@@ -10,6 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import br.com.ByteBank.dto.ClienteDtoRequest;
 import br.com.ByteBank.models.Cliente;
 import br.com.ByteBank.repository.ClienteRepository;
+import br.com.ByteBank.util.ClienteMapper;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -27,12 +28,14 @@ public class ClienteService {
 	}
 	
 	public Cliente save(ClienteDtoRequest clienteDtoRequest) {
-		return null;
+		Cliente cliente = ClienteMapper.INSTANCE.clienteTo(clienteDtoRequest);
+		return repository.save(cliente);
 	}
 	
 	
 	public Cliente findById(Long id) {
-		return repository.findById(id).orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST,"Cliente not Found."));
+		return repository.findById(id)
+						 .orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST,"Cliente not Found."));
 	}
 	
 }
