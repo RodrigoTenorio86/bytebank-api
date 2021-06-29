@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import br.com.ByteBank.dto.ClienteDtoRequest;
 import br.com.ByteBank.models.Cliente;
@@ -23,7 +24,7 @@ public interface ClienteApi {
 	@GetMapping()
 	ResponseEntity<List<Cliente>> listaCliente();
 
-	@GetMapping(value = "/cpf/{cpf}")
+	@GetMapping(path = "/cpf/{cpf}")
 	ResponseEntity<Cliente> consultaClientePorCpf(@PathVariable("cpf") String cpf);
 
 }

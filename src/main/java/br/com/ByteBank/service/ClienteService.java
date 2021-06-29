@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import br.com.ByteBank.dto.ClienteDtoRequest;
 import br.com.ByteBank.models.Cliente;
 import br.com.ByteBank.repository.ClienteRepository;
-import br.com.ByteBank.util.ClienteMapper;
+import br.com.ByteBank.util.Converter;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -24,11 +24,14 @@ public class ClienteService {
 	}
 	
 	public Cliente 	findByCpf(String cpf) {
-		return repository.findByCpf(cpf);
+		return repository.findByCpf(cpf).stream()
+										.filter(c->c.getCpf().equals(cpf))
+										.findAny()
+										.orElseThrow(()->new ResponseStatusException(HttpStatus.BAD_REQUEST));
 	}
 	
 	public Cliente save(ClienteDtoRequest clienteDtoRequest) {
-		Cliente cliente = ClienteMapper.INSTANCE.clienteTo(clienteDtoRequest);
+		Cliente cliente = Converter.INSTANCE.clienteTo(clienteDtoRequest);
 		return repository.save(cliente);
 	}
 	

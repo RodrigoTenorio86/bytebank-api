@@ -1,5 +1,7 @@
 package br.com.ByteBank.service;
 
+import java.math.BigDecimal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,4 +13,9 @@ import lombok.RequiredArgsConstructor;
 public class ContaService {
 
 	private final ContaRepository contaRepository;
+
+	public BigDecimal consultaSaldo(Integer agencia, Long numero, Integer digito) {
+		
+		return null;
+	}
 }

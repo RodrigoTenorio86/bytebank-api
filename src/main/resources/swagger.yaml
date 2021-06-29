@@ -57,6 +57,44 @@ paths:
           description: Requisição inválida
         500:
           description: Erro interno no servidor
+  
+    get:
+      tags:
+        - Cliente
+      summary: listar todos cliente
+      description: uma lista com todos cliente
+      operationId: listaCliente
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Cliente'
+        404:
+          description: not found
+    
+  '/clientes/cpf/{cpf}':
+    get:
+      tags:
+        - Cliente
+      summary: buscar por cpf
+      description: consultar pelo cpf
+      operationId: consultaClientePorCpf
+      parameters:
+        - in: path
+          name: cpf
+          type: string
+          required: true
+      responses:
+        201:
+          description: Cadastro efetuado com sucesso
+          schema:
+            $ref: '#/definitions/Cliente'
+        404:
+          description: not found
+        500:
+          description: Erro interno no servidor    
 
   '/conta/{agencia}/{numero}/{digito}/saldo':
     get:
