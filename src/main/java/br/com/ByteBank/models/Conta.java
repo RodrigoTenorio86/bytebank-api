@@ -9,10 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
+@Table(name = "tbl_conta")
 @Entity
 public class Conta {
 	@Id
@@ -22,7 +26,7 @@ public class Conta {
 	private Agencia agencia;
 	@ManyToOne
 	private Cliente cliente;
-	@OneToMany
+	@OneToMany(mappedBy = "conta")
 	private List<Transacao>transacoes;
 	private Integer numero;
 	private Integer digito;
